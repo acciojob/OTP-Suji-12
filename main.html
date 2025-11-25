@@ -8,7 +8,59 @@
 
 <body>
 	<!-- the entire body must be written by student -->
+	<div style="border:2px solid #000; padding:30px; border-radius:12px; width:80%; margin:auto; text-align:center;">
+
+        <h1 id="verification_heading">Verify Your Account</h1>
+
+        <p id="verification_subtext">
+            We emailed you the six digit code to acciojob@email.com
+            Enter the code below to confirm your email address.
+        </p>
+
+        <div class="code-container" style="display:flex; justify-content:center; gap:15px; margin-top:25px;">
+            <input type="text" maxlength="1" class="code" style="width:60px; height:60px; font-size:32px; text-align:center;">
+            <input type="text" maxlength="1" class="code" style="width:60px; height:60px; font-size:32px; text-align:center;">
+            <input type="text" maxlength="1" class="code" style="width:60px; height:60px; font-size:32px; text-align:center;">
+            <input type="text" maxlength="1" class="code" style="width:60px; height:60px; font-size:32px; text-align:center;">
+            <input type="text" maxlength="1" class="code" style="width:60px; height:60px; font-size:32px; text-align:center;">
+            <input type="text" maxlength="1" class="code" style="width:60px; height:60px; font-size:32px; text-align:center;">
+        </div>
+
+        <p style="background:#eee; padding:10px; width:350px; margin:25px auto; border-radius:8px;">
+            This is design only. We didn't actually send you an email as we don't have your email, right?
+        </p>
+
+    </div>
+	
     <script type="text/javascript" src="./script.js">
+		const inputs = document.querySelectorAll('.code');
+    inputs[0].focus();
+
+    inputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+            const value = e.target.value;
+
+            if (value.length === 1) {
+                if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            }
+        });
+        input.addEventListener('keydown', (e) => {
+            if (e.key === "Backspace") {
+
+                if (input.value === "") {  
+                    if (index > 0) {
+                        inputs[index - 1].value = "";
+                        inputs[index - 1].focus();
+                    }
+                } else {
+                    input.value = "";
+                }
+            }
+        });
+
+    });
 </script>
 
 </body>
